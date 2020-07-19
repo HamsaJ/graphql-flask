@@ -7,5 +7,6 @@ services:
     
 before_install: 
     - docker build -t graphql-flask:latest .
+script:
     - docker run -d -p 5000:5000 graphql-flask /bin/sh -c "coverage run -m pytest"
     - docker ps -a
