@@ -1,0 +1,11 @@
+language: python
+python:
+    - "3.7"
+
+services:
+    - docker
+    
+before_install: 
+    - docker build -t graphql-flask:latest .
+    - docker run -d -p 127.0.0.1:5000 graphql-flask /bin/sh -c "cd /usr/src/app; pip istall requirements.txt; pytest"
+    - docker ps -a
